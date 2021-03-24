@@ -209,17 +209,12 @@ class arena extends Phaser.Scene {
       .setScale(elaineScale);
     //
     //testing magic circle animations//
-    this.circle = this.add.group();
-    this.input.on(
-      "pointerdown",
-      function (pointer) {
-        this.circle
-          .create(pointer.x, pointer.y, "circle")
-          .play("circle")
-          .setScale(elaineScale);
-      },
-      this
-    );
+    // this.circle = this.add.group();
+    // this.input.on("pointerdown",
+    //   function (pointer) {
+    //     this.circle.create(pointer.x, pointer.y, "circle").play("circle").setScale(elaineScale);
+    //   }, this
+    // );
     //set collider//
     this.player.setCollideWorldBounds(true);
     this.physics.add.collider(this.wallsLayer, this.player);
@@ -230,7 +225,7 @@ class arena extends Phaser.Scene {
     this.physics.add.collider(this.wallsLayer, this.monsters3);
     this.physics.add.collider(this.wallsLayer, this.monsters4);
     this.physics.add.collider(this.wallsLayer, this.monsters5);
-    //collides between monster//
+    //colliders between monster//
     this.physics.add.collider(this.monsters1, this.monsters2);
     this.physics.add.collider(this.monsters1, this.monsters3);
     this.physics.add.collider(this.monsters1, this.monsters4);
@@ -251,6 +246,42 @@ class arena extends Phaser.Scene {
     this.physics.add.collider(this.monsters5, this.monsters2);
     this.physics.add.collider(this.monsters5, this.monsters3);
     this.physics.add.collider(this.monsters5, this.monsters4);
+    //call function after getting caught by monster//
+    this.physics.add.overlap(
+      this.player,
+      this.monsters1,
+      this.touchedMonster,
+      null,
+      this
+    );
+    this.physics.add.overlap(
+      this.player,
+      this.monsters2,
+      this.touchedMonster,
+      null,
+      this
+    );
+    this.physics.add.overlap(
+      this.player,
+      this.monsters3,
+      this.touchedMonster,
+      null,
+      this
+    );
+    this.physics.add.overlap(
+      this.player,
+      this.monsters4,
+      this.touchedMonster,
+      null,
+      this
+    );
+    this.physics.add.overlap(
+      this.player,
+      this.monsters5,
+      this.touchedMonster,
+      null,
+      this
+    );
     //
     //not yet//
     //score
@@ -261,12 +292,34 @@ class arena extends Phaser.Scene {
     //
   }
 
+  touchedMonster() {
+    //bombs.disableBody(true, true);
+    console.log("player caught, restart game");
+    this.cameras.main.shake(100);
+    // delay 1 sec
+    this.time.delayedCall(
+      500,
+      function () {
+        this.scene.restart();
+        // this.scene.start("gameoverScene");
+      },
+      [],
+      this
+    );
+  }
+
+  destroy(circle, lightning) {
+    circle.disableBody(true, true);
+    lightning.disableBody(true, true);
+  }
+
   update() {
     var offsetX = 7;
     var offsetY = 200;
     var speed = 260;
     var xmovement = 0;
     var ymovement = 0;
+    var attack = false;
     var wDown = this.input.keyboard.addKey("W");
     var sDown = this.input.keyboard.addKey("S");
     var aDown = this.input.keyboard.addKey("A");
@@ -277,6 +330,18 @@ class arena extends Phaser.Scene {
     this.physics.moveToObject(this.monsters3, this.player, 30, speed + 2500);
     this.physics.moveToObject(this.monsters4, this.player, 30, speed + 2500);
     this.physics.moveToObject(this.monsters5, this.player, 30, speed + 2500);
+    //for mouse click event
+    this.mouse = this.input.mousePointer;
+    //for mouse position
+    this.input = this.input;
+    //mouse clicked
+    if (this.mouse.isDown && attack == false) {
+      this.circle = this.add.sprite(this.input.x, this.input.y, "circle").play("circle").setScale(0.2);
+      attack = true;
+      this.time.delayedCall(
+        1000, destroy(this.circle, null), attack = false, this
+      );
+    }
     //monster's left right animations//
     if (this.monsters1.body.velocity.x > -1) {
       this.monsters1.flipX = true;
