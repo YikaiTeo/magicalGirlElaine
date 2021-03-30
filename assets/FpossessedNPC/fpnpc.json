@@ -1,0 +1,90 @@
+{
+  "frames": [
+    {
+      "filename": "FpossessedNPC.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 379,
+        "h": 641
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 379,
+        "h": 641
+      },
+      "sourceSize": {
+        "w": 379,
+        "h": 641
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FpossessedNPC2.png",
+      "frame": {
+        "x": 379,
+        "y": 0,
+        "w": 300,
+        "h": 650
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 300,
+        "h": 650
+      },
+      "sourceSize": {
+        "w": 300,
+        "h": 650
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "FpossessedNPC3.png",
+      "frame": {
+        "x": 679,
+        "y": 0,
+        "w": 349,
+        "h": 675
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 349,
+        "h": 675
+      },
+      "sourceSize": {
+        "w": 349,
+        "h": 675
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.6",
+    "image": "fpnpc.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2048,
+      "h": 2048
+    },
+    "scale": 1
+  }
+}
