@@ -200,30 +200,30 @@ class preloadScene extends Phaser.Scene {
   }
 
   next() {
+    this.terrainLayer.setVisible(true);
+    this.mainTerrainLayer.setVisible(true);
+    this.mainCollideLayer.setVisible(true);
+    this.mainOverlayLayer.setVisible(true);
+    this.streetLayer.setVisible(true);
+    this.streetCollideLayer.setVisible(true);
+    this.streetOverlayLayer.setVisible(true);
+    this.buildingsLayer.setVisible(true);
+    this.mainTreeLayer.setVisible(true);
+    this.mainTreeOverlayLayer.setVisible(true);
+    this.treeLayer.setVisible(true);
+    this.buildingsOverlayLayer.setVisible(true);
+    this.fenceLayer.setVisible(true);
+    this.treeOverlayLayer.setVisible(true);
+    //
+    this.player.setVisible(true);
+    //spinning magic circle//
+    this.magiccircle.setVisible(true);
+    //main stuff//
+    this.main.setVisible(true);
     this.time.delayedCall(
-      3000,
+      4500,
       function () {
         checkMainScreen = 1;
-        this.terrainLayer.setVisible(true);
-        this.mainTerrainLayer.setVisible(true);
-        this.mainCollideLayer.setVisible(true);
-        this.mainOverlayLayer.setVisible(true);
-        this.streetLayer.setVisible(true);
-        this.streetCollideLayer.setVisible(true);
-        this.streetOverlayLayer.setVisible(true);
-        this.buildingsLayer.setVisible(true);
-        this.mainTreeLayer.setVisible(true);
-        this.mainTreeOverlayLayer.setVisible(true);
-        this.treeLayer.setVisible(true);
-        this.buildingsOverlayLayer.setVisible(true);
-        this.fenceLayer.setVisible(true);
-        this.treeOverlayLayer.setVisible(true);
-        //
-        this.player.setVisible(true);
-        //spinning magic circle//
-        this.magiccircle.setVisible(true);
-        //main stuff//
-        this.main.setVisible(true);
       },
       [],
       this
