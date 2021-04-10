@@ -278,7 +278,7 @@ class preloadScene extends Phaser.Scene {
 
     if(space == 1) {
       this.next()
-    } else if(space == 2 && checkMainScreen == 1) {
+    } else if(space > 1 && checkMainScreen == 1) {
       checkMainScreen = 0;
       space = 0;
       this.next2();
