@@ -943,13 +943,10 @@ class city extends Phaser.Scene {
   }
 
   nextScene() {
-    var npc = this.pnpc.getChildren();
-    npc.disableBody(true, true);
+    this.pnpc.children.getArray().forEach((npc) => {
+      npc.disableBody(true, true);
+    });
     next = true;
-    // this.pnpc.children.getArray().forEach((npc) => {
-    //   npc.disableBody(true, true);
-    // });
-    // next = true;
   }
   nextScene2() {
     this.pnpc2.children.getArray().forEach((npc) => {
