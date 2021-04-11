@@ -96,9 +96,15 @@ class city extends Phaser.Scene {
         frameWidth: 64,
         frameHeight: 64
     });
+    //music//
+    this.load.audio('openDoor', [
+      'assets/music/zapsplat_household_door_backdoor_close_001_56920.mp3'
+    ]);
   }
 
   create() {
+    //sounds//
+    this.door = this.sound.add("openDoor");
     var map = this.make.tilemap({ key: "cityMap" });
     //map variables//
     //example;//
@@ -375,13 +381,13 @@ class city extends Phaser.Scene {
       .setSize(npcSizeX, npcSizeY)
       .setOffset(npcOffsetX, npcOffsetY);
     this.pnpc
-      .create(area3X, area3Y, "fpNPC")
+      .create(2487, 3206, "fpNPC")
       .play("fpNPC")
       .setScale(elaineScale)
       .setSize(npcSizeX, npcSizeY)
       .setOffset(npcOffsetX, npcOffsetY);
     this.pnpc
-      .create(area1X, area1Y, "fpNPC")
+      .create(2487, 3186, "fpNPC")
       .play("fpNPC")
       .setScale(elaineScale)
       .setSize(npcSizeX, npcSizeY)
@@ -533,7 +539,7 @@ class city extends Phaser.Scene {
       .setSize(npcSizeX, npcSizeY)
       .setOffset(npcOffsetX, npcOffsetY);
     this.pnpc2
-      .create(area2X, area2Y, "fpNPC")
+      .create(2697, 2103, "fpNPC")
       .play("fpNPC")
       .setScale(elaineScale)
       .setSize(npcSizeX, npcSizeY)
@@ -929,19 +935,19 @@ class city extends Phaser.Scene {
   }
 
   nextScene() {
-    this.pnpc.children.iterate((npc) => {
+    this.pnpc.children.getArray().forEach((npc) => {
       npc.disableBody(true, true);
     });
     next = true;
   }
   nextScene2() {
-    this.pnpc2.children.iterate((npc) => {
+    this.pnpc2.children.getArray().forEach((npc) => {
       npc.disableBody(true, true);
     });
     next = true;
   }
   nextScene3() {
-    this.pnpc3.children.iterate((npc) => {
+    this.pnpc3.children.getArray().forEach((npc) => {
       npc.disableBody(true, true);
     });
     next = true;
@@ -1030,12 +1036,12 @@ class city extends Phaser.Scene {
       this.player.flipX = false;
     }
     //enter house//
-    if (
-      this.player.x < 2362 &&
-      this.player.x > 2344 &&
-      this.player.y < 1825 &&
-      this.player.y > 1791
+    if (this.player.x < 2362 &&
+        this.player.x > 2344 &&
+        this.player.y < 1825 &&
+        this.player.y > 1791
     ) {
+      this.door.play();
       console.log("entering house");
       this.scene.stop("city");
       this.player.x = 522;
