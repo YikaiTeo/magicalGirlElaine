@@ -204,14 +204,14 @@ class arena3 extends Phaser.Scene {
     //player//
     var elaineScale = 0.2;
     this.player = this.physics.add
-      .sprite(800, 840, "elaine")
+      .sprite(800, 943, "elaine")
       .setScale(elaineScale)
       .setSize(250, 370);
     heart = 3;
     collide = true;
     //monster//
     this.monsters1 = this.physics.add
-      .sprite(1000, 840, "monster")
+      .sprite(1000, 943, "monster")
       .play("Monster")
       .setVisible(true)
       .setScale(elaineScale);
